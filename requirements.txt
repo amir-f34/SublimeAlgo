@@ -1,0 +1,9 @@
+uvicorn
+fastapi
+pymongo
+secp256k1
+requests
+tabulate
+torpy[requests]
+torch
+torchvision

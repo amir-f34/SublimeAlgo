@@ -1,0 +1,36 @@
+{
+    "name": "SublimeAlgoClient",
+    "short_name": "sublime-algo-client",
+    "version": "0.1",
+    "license": "MIT",
+    "author": "Amir F.",
+    "documentation": "Client serving endpoint for CLI.",
+    "endpoints": [
+        {
+            "input_query": "",
+            "input_headers": "",
+            "input_body": {
+                "args": [
+                    "<String>"
+                ]
+            },
+            "output": "<String>",
+            "documentation": "Wrapper around sublime_cli.py interface.",
+            "example_calls": [
+                {
+                    "body": { 
+                        "args": ["-t", "task01-18ed0f86"]
+                    },
+                    "method": "POST",
+                    "query": "",
+                    "headers": "",
+                    "output": "..."
+                }
+            ],
+            "uri": "/sublime_cli",
+            "input_methods": [
+                "POST"
+            ]
+        }
+    ]
+}

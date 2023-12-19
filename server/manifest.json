@@ -1,0 +1,136 @@
+{
+    "name": "SublimeAlgo",
+    "short_name": "sublime-algo",
+    "version": "0.1",
+    "license": "MIT",
+    "author": "Amir F.",
+    "documentation": "Server endpoints for SublimeAlgo.",
+    "endpoints": [
+        {
+            "input_query": "",
+            "input_headers": "",
+            "output": {
+                "_id": "<String>", 
+                "name": "<String>", 
+                "population": "<Int>", 
+                "generations": "<Int>"
+            },
+            "documentation": "Gets the available tasks.",
+            "example_calls": [
+                {
+                    "body": "",
+                    "method": "GET",
+                    "query": "",
+                    "headers": "",
+                    "output": {
+                        "_id": "task01-18ed0f86",
+                        "name": "task01",
+                        "population": 50,
+                        "generations": 245
+                    }
+                }
+            ],
+            "uri": "/tasks",
+            "input_methods": [
+                "GET"
+            ]
+        },
+        {
+            "input_query": "",
+            "input_headers": "",
+            "output": "<File>",
+            "documentation": "Downloads the zip for this task.",
+            "example_calls": [
+                {
+                    "body": "",
+                    "method": "GET",
+                    "query": "",
+                    "headers": "",
+                    "output": "<task01-18ed0f86.zip>"
+                }
+            ],
+            "uri": "/download_task/{task_id}",
+            "input_methods": [
+                "GET"
+            ]
+        },
+        {
+            "input_query": "",
+            "input_headers": "",
+            "output": {"nonce": "<String>"},
+            "documentation": "Gets the next nonce to sign for {pubkey}.",
+            "example_calls": [
+                {
+                    "body": "",
+                    "method": "GET",
+                    "query": "",
+                    "headers": "",
+                    "output": {"nonce": "0x56adef.."}
+                }
+            ],
+            "uri": "/nonce/{pubkey}",
+            "input_methods": [
+                "GET"
+            ]
+        },
+        {
+            "input_query": "",
+            "input_headers": {
+                "pubkey": "<String>",
+                "signature": "<String>",
+                "nonce": "<String>"
+            },
+            "output": "<String>",
+            "documentation": "Gets the next job (phenotype) to work on for {task_id}.",
+            "example_calls": [
+                {
+                    "body": "",
+                    "method": "GET",
+                    "query": "",
+                    "headers": {"pubkey": "035445aefcd...",
+                        "signature": "054adf98...",
+                        "nonce": "0x56adef"
+                    },
+                    "output": "56adef|ad0000"
+                }
+            ],
+            "uri": "/new_job/{task_id}",
+            "input_methods": [
+                "GET"
+            ]
+        },
+        {
+            "input_body": {
+                "returned": "<Float>"
+            }, 
+            "input_query": "",
+            "input_headers": {
+                "pubkey": "<String>",
+                "signature": "<String>",
+                "nonce": "<String>"
+            },
+            "output": {},
+            "documentation": "Takes in the calculated fitness of the given phenotype.",
+            "example_calls": [
+                {
+                    "body": {
+                        "returned": 0.1143
+                    },
+                    "method": "POST",
+                    "query": "",
+                    "headers": {
+                        "pubkey": "035445aefcd...",
+                        "signature": "054adf98...",
+                        "nonce": "0x56adef"
+                    },
+                    "output": {
+                    }
+                }
+            ],
+            "uri": "/post_job/{task_id}/{job_id}",
+            "input_methods": [
+                "POST"
+            ]
+        }
+    ]
+}
